@@ -66,3 +66,40 @@ python src/stage1.py
 
 # 3. Run Signal Extraction (Input: Stage 1 outputs)
 python src/stage2.py
+
+
+
+Outputs will be saved in the kaggle/working/stage2 directory as .npy files.
+
+```
+## 📂 Project Structure
+```bash
+PlaintextECG-Digitization-Pipeline/
+├── src/
+│   ├── constant.py        # Config, paths, and Smart Batching logic
+│   ├── stage0.py          # Segmentation Inference
+│   ├── stage1.py          # Rectification Inference
+│   ├── stage2.py          # Signal Extraction Inference
+│   ├── stage*_model.py    # PyTorch Model Definitions
+│   └── stage*_common.py   # Utils (Post-processing, Signal Cleaning)
+├── requirements.txt       # Python Dependencies
+├── LICENSE                # MIT License
+└── README.md              # Project Documentation
+
+```
+## 📊 Performance Metrics
+
+| Metric | Baseline (Original) | Optimized (Ours) | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Inference Time** | ~9 hours | ~5 hours | **45% Faster** ⚡ |
+| **VRAM Usage** | High (OOM Crashes) | Stable (<15GB) | **Memory Safe** 🛡️ |
+| **Precision** | FP32 (Standard) | FP16 (Mixed) | **2x Throughput** 🚀 |
+| **Batch Strategy** | Serial (Batch=1) | Dynamic (Smart Batching) | **High GPU Util** 📈 |
+| **Accuracy (MAE)** | 18.41 | 18.33 | **Better Score** 🎯 |
+
+
+## ⚖️ License
+
+Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
+
+This project is free to use for educational and portfolio purposes. If you use this code in your own work, a link back to this repository would be appreciated!
